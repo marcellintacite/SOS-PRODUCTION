@@ -7,7 +7,11 @@ import Button from "./component/Button";
 import { useNavigate, Outlet } from "react-router";
 export default function HopitalProche() {
   const navigation = useNavigate();
+  const [handleShow, sethandleShow] = React.useState(true);
   const handleRoute = (link) => {
+    if (link === "/hopitalProche/proche") {
+      sethandleShow(false);
+    }
     navigation(link);
   };
   return (
@@ -25,31 +29,34 @@ export default function HopitalProche() {
           </div>
         </div>
       </div>
-      <div className="ContainerRight">
-        <h2>Hopital Proche</h2>
-        <p>
-          7 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque
-          veniam, necessitatibus, assumenda dicta corrupti omnis ad beatae autem
-          debitis maxime suscipit, dolore quis illum quidem. Illum dolor harum
-          enim voluptate.
-        </p>
-        <div className="ServiceContainer">
-          <Button
-            title="Maps"
-            detail="Idéal Pour un endroit inconnu"
-            icon={<FaMapMarked />}
-            color="#39c3f699"
-            action={() => handleRoute("/hopitalProche/map")}
-          />
-          <Button
-            title="Chercher"
-            detail="Idéal Pour un endroit inconnu"
-            icon={<FaSearch />}
-            action={() => handleRoute("/hopitalProche/proche")}
-          />
+      {handleShow ? (
+        <div className="ContainerRight">
+          <h2>Hopital Proche</h2>
+          <p>
+            7 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Doloremque veniam, necessitatibus, assumenda dicta corrupti omnis ad
+            beatae autem debitis maxime suscipit, dolore quis illum quidem.
+            Illum dolor harum enim voluptate.
+          </p>
+          <div className="ServiceContainer">
+            <Button
+              title="Maps"
+              detail="Idéal Pour un endroit inconnu"
+              icon={<FaMapMarked />}
+              color="#39c3f699"
+              action={() => handleRoute("/hopitalProche/map")}
+            />
+            <Button
+              title="Chercher"
+              detail="Idéal Pour un endroit inconnu"
+              icon={<FaSearch />}
+              action={() => handleRoute("/hopitalProche/proche")}
+            />
+          </div>
         </div>
-      </div>
-      <Outlet />
+      ) : (
+        <Outlet />
+      )}
     </StyledHopitalProche>
   );
 }
@@ -73,6 +80,7 @@ const StyledHopitalProche = styled.div`
     flex: 1;
     flex-direction: column;
     padding: 1rem;
+    position: relative;
 
     @media (max-width: 768px) {
       display: none;
@@ -142,9 +150,9 @@ const StyledHopitalProche = styled.div`
   }
   .ContainerRight {
     display: flex;
+    flex-direction: column;
     flex: 3;
     padding-right: 55px;
-    flex-direction: column;
     padding-top: 0.1rem;
 
     @media (max-width: 768px) {

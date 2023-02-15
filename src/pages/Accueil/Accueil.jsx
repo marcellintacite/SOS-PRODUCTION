@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Illustration from "./Assets/portrait-african-american-practitioner-nurse-smiling-camera-removebg-preview 1.svg";
 import Bg from "./Assets/bg.png";
-import { Buttons } from "./data/button";
+import { Buttons } from "./data/buttons.js";
 import searchIcon from "./Assets/searh.png";
 import circle from "./Assets/Ellipse.png";
 import rainbow from "./Assets/Rainbow.png";
