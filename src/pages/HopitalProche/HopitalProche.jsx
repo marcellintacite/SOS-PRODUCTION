@@ -80,15 +80,19 @@ const StyledHopitalProche = styled.div`
     flex: 1;
     flex-direction: column;
     padding: 1rem;
-    position: relative;
+    
+    z-index:100;
+    top: 70px;
 
     @media (max-width: 768px) {
       display: none;
     }
     .Container {
+      
       background: rgba(215, 235, 255, 0.21);
       border-radius: 5px;
       overflow: auto;
+      position: sticky;
       padding: 10px;
 
       ::-webkit-scrollbar {
