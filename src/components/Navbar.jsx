@@ -13,7 +13,7 @@ export default function Navbar() {
   };
   useEffect(() => {
     setOpen(false); // Close the navigation panel
-  }, [pathname])
+  }, [pathname]);
   return (
     <StyledNavbar onMouseLeave={handleClose}>
       <div className="container">
@@ -75,6 +75,8 @@ const StyledNavbar = styled.nav`
     width: 100%;
     height: 60px;
     justify-content: space-between;
+    position: fixed;
+    background-color: #fff8;
   }
 
   @media (max-width: 768px) {
