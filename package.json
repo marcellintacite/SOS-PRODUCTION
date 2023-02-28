@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "homepage": "https://gdsc-ucb.github.io",
   "private": true,
-  "proxy": "https://maps.googleapis.com/maps/api/place",
   "dependencies": {
+    "@kommunicate/kommunicate-chatbot-plugin": "^0.0.5",
     "@react-google-maps/api": "^2.18.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -19,6 +19,7 @@
     "react-best-chatbot": "^2.0.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-select": "^5.7.0",
