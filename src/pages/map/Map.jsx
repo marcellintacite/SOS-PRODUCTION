@@ -59,7 +59,7 @@ function MyComponent() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  });
 
   console.log(hospital);
 
