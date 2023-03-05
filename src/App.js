@@ -3,12 +3,16 @@ import GlobalStyle from "./theme/globalStyles";
 import Accueil from "./pages/Accueil/Accueil";
 import HopitalProche from "./pages/HopitalProche/HopitalProche";
 import Right from "./pages/HopitalProche/component/ContainerRight";
-import QuickTest from "./pages/Quicktest/QuickTest";
+import AjoutCure from "./pages/AjouterUneCure/AjoutCure";
+import Connexion from "./pages/Connexion/Connexion";
 import Chercher from "./pages/RechercheHopital/Chercher";
+import CurMedicament from "./pages/CureMedicament/CureMedicament";
+import SuivantAjoutCure from "./pages/SuivantAjoutCure/SuivantAjoutCure";
 
 import Secours from "./pages/Secours/Secours";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./fonctions/ScrollToTop";
+import RechercheGlobal from "./pages/RechercheGlobal/RechercheGlobal";
 import Map from "./pages/map/Map";
 import "./app.css";
 import ChatContainer from "./components/ChatContainer";
@@ -21,8 +25,11 @@ import Lottie from "lottie-react";
 import InstallPWA from "./components/PromptPwa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProtectedBefore from "./components/PotectedBefore";
+import Deconnexion from "./components/Deconnexion";
 
 function App() {
+  const [isLoggedIn, setIsLogged] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showBtn, setShow] = useState(true);
   const [location, setLocation] = useState({});
@@ -53,6 +60,9 @@ function App() {
     setTimeout(() => {
       setShow(true);
     }, 5000);
+    if (localStorage.getItem("user")) {
+      setIsLogged(true);
+    }
 
     if (Object.keys(location).length === 0) {
       getLocation();
@@ -90,7 +100,18 @@ function App() {
           <ToastContainer />
           <Routes>
             <Route path="/" element={<Accueil />} />
-            <Route path="/Quicktest" element={<QuickTest />} />
+            <Route path="/Connexion" element={<Connexion />} />
+            <Route path="/Deconnexion" element={<Deconnexion />} />
+            <Route
+              path="/CureMedicament"
+              element={
+                <ProtectedBefore isLoggedIn={isLoggedIn}>
+                  <CurMedicament />
+                </ProtectedBefore>
+              }
+            />
+            <Route path="/AjouterCure" element={<AjoutCure />} />
+            <Route path="/SuivantAjouterCure" element={<SuivantAjoutCure />} />
             <Route path="/hopitalProche" element={<HopitalProche />}>
               <Route path="/hopitalProche" element={<Right />} />
               <Route path="/hopitalProche/proche" element={<Chercher />} />
@@ -99,11 +120,13 @@ function App() {
               path="hopitalProche/map"
               element={<Map location={location} />}
             />
+
             <Route path="*" element={<Accueil />} />
             <Route path="/Secours" element={<Secours />} />
             <Route path="/Sexualite" element={<Sexualite />} />
             <Route path="/Maternite" element={<Maternite />} />
             <Route path="/divers" element={<Divers />} />
+            <Route path="/search/:parametre" element={<RechercheGlobal />} />
           </Routes>
           {showBtn && <InstallPWA setCLose={setShow} />}
           <ChatContainer />

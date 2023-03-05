@@ -10,11 +10,24 @@ import rainbow from "./Assets/Rainbow.png";
 
 export default function Accueil() {
   const navigate = useNavigate();
+  const [query, setQuery] = React.useState("");
 
   const ActionButton = (path) => {
     navigate(path);
   };
 
+  const SearchGlobal = () => {
+    navigate(`search/${query}`);
+  };
+
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    SearchGlobal(query);
+  };
   return (
     <>
       <StyledAccueil bg={Bg}>
@@ -36,10 +49,17 @@ export default function Accueil() {
           </div>
         </div>
         <div className="ContainerRight">
-          <div className="Search">
-            <input type="text" placeholder="Chercher un article..." />
-            <img src={searchIcon} alt="search" />
-          </div>
+          <form className="Search" onSubmit={(e) => handleSubmit(e)}>
+            <input
+              type="text"
+              placeholder="Chercher un article..."
+              id="Search"
+              onChange={(e) => handleChange(e)}
+            />
+
+            <img src={searchIcon} alt="search" onClick={SearchGlobal} />
+          </form>
+
           <div className="Services">
             <h2>Services</h2>
             <p>

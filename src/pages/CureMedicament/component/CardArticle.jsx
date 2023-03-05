@@ -26,10 +26,6 @@ const CardContainer = styled.div`
   padding: 8px;
   cursor: pointer;
   height: 245px;
-  width: 300px;
-  @media (max-width: 678px) {
-    width: 100%;
-  }
 
   .img {
     background: url(${(props) => props.im});
