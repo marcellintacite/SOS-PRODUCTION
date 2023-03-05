@@ -104,7 +104,7 @@ const StyledNavbar = styled.nav`
   display: flex;
   align-items: center;
   height: 60px;
-  border: 1px solid rgba(159, 159, 159, 0.2);
+  border: 1px solid rgba(159, 159, 159, 0.3);
   z-index: 2000;
 
   .container {
@@ -143,7 +143,7 @@ const StyledNavbar = styled.nav`
       display: flex;
       align-items: center;
       margin-right: 10px;
-      background-color: #d9d9d920;
+      background-color: #d9d9d930;
       padding: 5px 15px;
       border-radius: 10px;
       gap: 10px;
