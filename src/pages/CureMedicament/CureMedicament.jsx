@@ -162,6 +162,10 @@ const StyledHopitalProche = styled.div`
       h2 {
         width: 100%;
         font-size: 28px;
+
+        @media (max-width: 678px) {
+          font-size: 16px;
+        }
       }
 
       .button {
