@@ -7,7 +7,6 @@ import AjoutCure from "./pages/AjouterUneCure/AjoutCure";
 import Connexion from "./pages/Connexion/Connexion";
 import Chercher from "./pages/RechercheHopital/Chercher";
 import CurMedicament from "./pages/CureMedicament/CureMedicament";
-import SuivantAjoutCure from "./pages/SuivantAjoutCure/SuivantAjoutCure";
 
 import Secours from "./pages/Secours/Secours";
 import Navbar from "./components/Navbar";
@@ -27,6 +26,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedBefore from "./components/PotectedBefore";
 import Deconnexion from "./components/Deconnexion";
+import { requestPermission } from "./fonction";
 
 function App() {
   const [isLoggedIn, setIsLogged] = useState(false);
@@ -63,6 +63,8 @@ function App() {
     if (localStorage.getItem("user")) {
       setIsLogged(true);
     }
+
+    requestPermission();
 
     if (Object.keys(location).length === 0) {
       getLocation();
@@ -111,7 +113,6 @@ function App() {
               }
             />
             <Route path="/AjouterCure" element={<AjoutCure />} />
-            <Route path="/SuivantAjouterCure" element={<SuivantAjoutCure />} />
             <Route path="/hopitalProche" element={<HopitalProche />}>
               <Route path="/hopitalProche" element={<Right />} />
               <Route path="/hopitalProche/proche" element={<Chercher />} />
