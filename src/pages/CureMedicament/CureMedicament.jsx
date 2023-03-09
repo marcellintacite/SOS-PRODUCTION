@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 export default function CurMedicament() {
   const [DataCure, setDataCure] = useState(Medicaments);
   const [show, setShow] = useState(false);
+  const [data, setData] = useState({});
   const Navigate = useNavigate();
 
   const AjouterCure = () => {
@@ -46,10 +47,8 @@ export default function CurMedicament() {
           </div>
 
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit nobis
-            tenetur consequuntur accusantium rerum sunt molestias, quo aperiam!
-            Amet doloribus tempore molestiae ad doloremque id consequuntur unde
-            adipisci quaerat vero.
+            Veuillez me fournir les informations necéssaires pour mieux pour
+            vous rappeler de vos cures
           </p>
 
           <div className="body">
